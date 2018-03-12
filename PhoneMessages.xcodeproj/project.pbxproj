@@ -8,19 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		791AB718204F061000794AEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB717204F061000794AEF /* AppDelegate.swift */; };
-		791AB71A204F061000794AEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB719204F061000794AEF /* ViewController.swift */; };
 		791AB71C204F061200794AEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 791AB71B204F061200794AEF /* Assets.xcassets */; };
 		791AB71F204F061200794AEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 791AB71D204F061200794AEF /* Main.storyboard */; };
+		791AB728204F06DB00794AEF /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB727204F06DB00794AEF /* MainVC.swift */; };
+		791AB72B204F0B1F00794AEF /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB729204F0B1F00794AEF /* GeneralExtensions.swift */; };
+		791AB72C204F0B1F00794AEF /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB72A204F0B1F00794AEF /* StringExtensions.swift */; };
+		791AB72E204F0F3C00794AEF /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB72D204F0F3C00794AEF /* MessageModel.swift */; };
+		791AB730204F191800794AEF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB72F204F191700794AEF /* Constants.swift */; };
+		7995264920518B22006115DD /* CurrentMedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995264820518B22006115DD /* CurrentMedsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		791AB714204F061000794AEF /* PhoneMessages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneMessages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		791AB717204F061000794AEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		791AB719204F061000794AEF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		791AB71B204F061200794AEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		791AB71E204F061200794AEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		791AB720204F061200794AEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		791AB721204F061200794AEF /* PhoneMessages.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PhoneMessages.entitlements; sourceTree = "<group>"; };
+		791AB727204F06DB00794AEF /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		791AB729204F0B1F00794AEF /* GeneralExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralExtensions.swift; path = "../../Physical Exam 2/Physical Exam 2/GeneralExtensions.swift"; sourceTree = "<group>"; };
+		791AB72A204F0B1F00794AEF /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = "../../Physical Exam 2/Physical Exam 2/StringExtensions.swift"; sourceTree = "<group>"; };
+		791AB72D204F0F3C00794AEF /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		791AB72F204F191700794AEF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "../../Chart Parsing Swift4/Chart Parsing/Constants.swift"; sourceTree = "<group>"; };
+		7995264820518B22006115DD /* CurrentMedsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentMedsController.swift; path = ../../SampleCheckOutTab/SampleCheckOutTab/CurrentMedsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,12 +63,17 @@
 		791AB716204F061000794AEF /* PhoneMessages */ = {
 			isa = PBXGroup;
 			children = (
-				791AB717204F061000794AEF /* AppDelegate.swift */,
-				791AB719204F061000794AEF /* ViewController.swift */,
-				791AB71B204F061200794AEF /* Assets.xcassets */,
 				791AB71D204F061200794AEF /* Main.storyboard */,
+				791AB717204F061000794AEF /* AppDelegate.swift */,
+				791AB727204F06DB00794AEF /* MainVC.swift */,
+				791AB72D204F0F3C00794AEF /* MessageModel.swift */,
+				7995264820518B22006115DD /* CurrentMedsController.swift */,
+				791AB71B204F061200794AEF /* Assets.xcassets */,
 				791AB720204F061200794AEF /* Info.plist */,
 				791AB721204F061200794AEF /* PhoneMessages.entitlements */,
+				791AB72F204F191700794AEF /* Constants.swift */,
+				791AB729204F0B1F00794AEF /* GeneralExtensions.swift */,
+				791AB72A204F0B1F00794AEF /* StringExtensions.swift */,
 			);
 			path = PhoneMessages;
 			sourceTree = "<group>";
@@ -95,6 +110,11 @@
 				TargetAttributes = {
 					791AB713204F061000794AEF = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -133,8 +153,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				791AB71A204F061000794AEF /* ViewController.swift in Sources */,
+				791AB72E204F0F3C00794AEF /* MessageModel.swift in Sources */,
+				791AB72C204F0B1F00794AEF /* StringExtensions.swift in Sources */,
 				791AB718204F061000794AEF /* AppDelegate.swift in Sources */,
+				791AB72B204F0B1F00794AEF /* GeneralExtensions.swift in Sources */,
+				791AB728204F06DB00794AEF /* MainVC.swift in Sources */,
+				7995264920518B22006115DD /* CurrentMedsController.swift in Sources */,
+				791AB730204F191800794AEF /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +294,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = PhoneMessages/PhoneMessages.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VY6BVT84SC;
@@ -278,6 +302,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fulgentwake.PhoneMessages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -288,7 +313,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = PhoneMessages/PhoneMessages.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VY6BVT84SC;
@@ -297,6 +321,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fulgentwake.PhoneMessages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
