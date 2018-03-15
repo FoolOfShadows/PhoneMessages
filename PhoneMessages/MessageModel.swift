@@ -27,11 +27,24 @@ struct Message {
     var ptLabelName:String {return getFileLabellingName(ptInnerName)}
     var ptDOB:String {return nameAgeDOB(theText).2}
     var phone:String {return nameAgeDOB(theText).3}
-    var allergies:String {return getAllergyTextFrom(theText)}
-    var medicines:String {return getMedTextFrom(theText)}
+    var allergies:String {return theText.simpleRegExMatch(Regexes.allergies.rawValue).cleanTheTextOf(basicAllergyBadBits)/*getAllergyTextFrom(theText)*/}
+    var medicines:String {return theText.simpleRegExMatch(Regexes.medications.rawValue).cleanTheTextOf(medBadBits)/*getMedTextFrom(theText)*/}
     var lastAppointment:String {return getLastAptInfoFrom(theText)}
     var nextAppointment:String {return getNextAptInfoFrom(theText)}
 
+    enum Regexes:String {
+        case social = "(?s)(Social history).*((?<=)Past medical history)"
+        case family1 = "(?s)(Family health history).*(Preventive care)"
+        case family2 = "(?s)(Family health history).*(Social history)"
+        case nutrition1 = "(?s)(Nutrition history).*((?<=)Developmental history)"
+        case nutrition2 = "(?s)(Nutrition history).*((?<=)Allergies\\n)"
+        case diagnoses = "(?s)Diagnoses.*Social history*?\\s(?=\\nSmoking status*?\\s\\n)"
+        case medications = "(?s)(Medications).*(Encounters)"
+        case allergies = "(?s)(\nAllergies\n).*(Medications)"
+        case pmh = "(?s)(Ongoing medical problems).*(Family health history)"
+        case psh = "(?s)(Major events).*(Ongoing medical problems)"
+        case preventive = "(?s)(Preventive care).*((?<=)Social history)"
+    }
     
 }
 
@@ -150,45 +163,45 @@ func checkForICD10(_ theText: String, window: NSWindow) -> Bool {
     return icd10bool
 }
 
-func getAllergyTextFrom(_ theText:String) -> String {
-    var allergyResults = [String]()
-    //Get the allergy info
-    if var basicAllergyRegex = theText.findRegexMatchBetween(basicAllergyStartOfText, and: basicAllergyEndOfText) {
-        basicAllergyRegex = basicAllergyRegex.cleanTheTextOf(basicAllergyBadBits)
-        basicAllergyRegex = basicAllergyRegex.replacingOccurrences(of: "\n\n", with: "\n")
-        allergyResults.append(basicAllergyRegex)
-    }
-    
-    
-    let finalAllergiesParameter = defineFinalParameter(theText, firstParameter: freeAllergyEndOfTextFirstParameter, secondParameter: freeAllergyEndOfTextSecondParameter)
-    if var freeAllergyRegex = theText.findRegexMatchBetween(freeAllergyStartOfText, and: finalAllergiesParameter) {
-        freeAllergyRegex = freeAllergyRegex.cleanTheTextOf(freeAllergyBadBits)
-        freeAllergyRegex = freeAllergyRegex.replacingOccurrences(of: "\n\n", with: "\n")
-        allergyResults.append(freeAllergyRegex)
-    }
-    //print(allergyResults)
-    return allergyResults.joined(separator: "\n")
-}
+//func getAllergyTextFrom(_ theText:String) -> String {
+//    var allergyResults = [String]()
+//    //Get the allergy info
+//    if var basicAllergyRegex = theText.findRegexMatchBetween(basicAllergyStartOfText, and: basicAllergyEndOfText) {
+//        basicAllergyRegex = basicAllergyRegex.cleanTheTextOf(basicAllergyBadBits)
+//        basicAllergyRegex = basicAllergyRegex.replacingOccurrences(of: "\n\n", with: "\n")
+//        allergyResults.append(basicAllergyRegex)
+//    }
+//
+//
+//    let finalAllergiesParameter = defineFinalParameter(theText, firstParameter: freeAllergyEndOfTextFirstParameter, secondParameter: freeAllergyEndOfTextSecondParameter)
+//    if var freeAllergyRegex = theText.findRegexMatchBetween(freeAllergyStartOfText, and: finalAllergiesParameter) {
+//        freeAllergyRegex = freeAllergyRegex.cleanTheTextOf(freeAllergyBadBits)
+//        freeAllergyRegex = freeAllergyRegex.replacingOccurrences(of: "\n\n", with: "\n")
+//        allergyResults.append(freeAllergyRegex)
+//    }
+//    //print(allergyResults)
+//    return allergyResults.joined(separator: "\n")
+//}
 
-func getMedTextFrom(_ theText:String) -> String {
-    guard let theResults = theText.findRegexMatchBetween(medStartOfText, and: medEndOfText) else {return "No med info found"}
-    if theResults.isEmpty || theResults == "" {
-        return "Meds turned up empty"
-    }
-    return theResults
-}
+//func getMedTextFrom(_ theText:String) -> String {
+//    guard let theResults = theText.findRegexMatchBetween(medStartOfText, and: medEndOfText) else {return "No med info found"}
+//    if theResults.isEmpty || theResults == "" {
+//        return "Meds turned up empty"
+//    }
+//    return theResults
+//}
 
 //Check for the existence of certain strings in the text
 //in order to determine the best string to use in the regexTheText function
-func defineFinalParameter(_ theText: String, firstParameter: String, secondParameter: String) -> String {
-    var theParameter = ""
-    if theText.range(of: firstParameter) != nil {
-        theParameter = firstParameter
-    } else if theText.range(of: secondParameter) != nil {
-        theParameter = secondParameter
-    }
-    return theParameter
-}
+//func defineFinalParameter(_ theText: String, firstParameter: String, secondParameter: String) -> String {
+//    var theParameter = ""
+//    if theText.range(of: firstParameter) != nil {
+//        theParameter = firstParameter
+//    } else if theText.range(of: secondParameter) != nil {
+//        theParameter = secondParameter
+//    }
+//    return theParameter
+//}
 
 func getLastAptInfoFrom(_ theText: String) -> String {
     guard let baseSection = theText.findRegexMatchFrom("Encounters", to: "Appointments") else {return ""}

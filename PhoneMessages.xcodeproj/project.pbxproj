@@ -14,8 +14,10 @@
 		791AB72B204F0B1F00794AEF /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB729204F0B1F00794AEF /* GeneralExtensions.swift */; };
 		791AB72C204F0B1F00794AEF /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB72A204F0B1F00794AEF /* StringExtensions.swift */; };
 		791AB72E204F0F3C00794AEF /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB72D204F0F3C00794AEF /* MessageModel.swift */; };
-		791AB730204F191800794AEF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB72F204F191700794AEF /* Constants.swift */; };
+		791DBFB2205ABC4100974F57 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791DBFB1205ABC4100974F57 /* Constants.swift */; };
+		796150AE205818EF00EC8D08 /* RedGreenCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796150AD205818EF00EC8D08 /* RedGreenCheckbox.swift */; };
 		7995264920518B22006115DD /* CurrentMedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995264820518B22006115DD /* CurrentMedsController.swift */; };
+		79F161E42056FC530025E991 /* SymptomsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F161E32056FC530025E991 /* SymptomsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,8 +31,10 @@
 		791AB729204F0B1F00794AEF /* GeneralExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralExtensions.swift; path = "../../Physical Exam 2/Physical Exam 2/GeneralExtensions.swift"; sourceTree = "<group>"; };
 		791AB72A204F0B1F00794AEF /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = "../../Physical Exam 2/Physical Exam 2/StringExtensions.swift"; sourceTree = "<group>"; };
 		791AB72D204F0F3C00794AEF /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
-		791AB72F204F191700794AEF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "../../Chart Parsing Swift4/Chart Parsing/Constants.swift"; sourceTree = "<group>"; };
+		791DBFB1205ABC4100974F57 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		796150AD205818EF00EC8D08 /* RedGreenCheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RedGreenCheckbox.swift; path = ../../LIROS/LIROS/RedGreenCheckbox.swift; sourceTree = "<group>"; };
 		7995264820518B22006115DD /* CurrentMedsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentMedsController.swift; path = ../../SampleCheckOutTab/SampleCheckOutTab/CurrentMedsController.swift; sourceTree = "<group>"; };
+		79F161E32056FC530025E991 /* SymptomsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +72,14 @@
 				791AB727204F06DB00794AEF /* MainVC.swift */,
 				791AB72D204F0F3C00794AEF /* MessageModel.swift */,
 				7995264820518B22006115DD /* CurrentMedsController.swift */,
+				79F161E32056FC530025E991 /* SymptomsController.swift */,
 				791AB71B204F061200794AEF /* Assets.xcassets */,
 				791AB720204F061200794AEF /* Info.plist */,
 				791AB721204F061200794AEF /* PhoneMessages.entitlements */,
-				791AB72F204F191700794AEF /* Constants.swift */,
+				791DBFB1205ABC4100974F57 /* Constants.swift */,
 				791AB729204F0B1F00794AEF /* GeneralExtensions.swift */,
 				791AB72A204F0B1F00794AEF /* StringExtensions.swift */,
+				796150AD205818EF00EC8D08 /* RedGreenCheckbox.swift */,
 			);
 			path = PhoneMessages;
 			sourceTree = "<group>";
@@ -156,10 +162,12 @@
 				791AB72E204F0F3C00794AEF /* MessageModel.swift in Sources */,
 				791AB72C204F0B1F00794AEF /* StringExtensions.swift in Sources */,
 				791AB718204F061000794AEF /* AppDelegate.swift in Sources */,
+				79F161E42056FC530025E991 /* SymptomsController.swift in Sources */,
+				791DBFB2205ABC4100974F57 /* Constants.swift in Sources */,
 				791AB72B204F0B1F00794AEF /* GeneralExtensions.swift in Sources */,
+				796150AE205818EF00EC8D08 /* RedGreenCheckbox.swift in Sources */,
 				791AB728204F06DB00794AEF /* MainVC.swift in Sources */,
 				7995264920518B22006115DD /* CurrentMedsController.swift in Sources */,
-				791AB730204F191800794AEF /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

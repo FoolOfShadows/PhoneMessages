@@ -12,10 +12,11 @@ protocol scriptTableDelegate: class {
     func currentMedsWillBeDismissed(sender: CurrentMedsController)
 }
 
-class MainVC: NSViewController, scriptTableDelegate {
+protocol symptomsDelegate: class {
+    func symptomsSelectionWillBeDismissed(sender: SymptomsController)
+}
 
-    
-    
+class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate {
 
     @IBOutlet weak var dateView: NSTextField!
     @IBOutlet weak var nameView: NSTextField!
@@ -44,6 +45,7 @@ class MainVC: NSViewController, scriptTableDelegate {
     
     var medicationString = String()
     var wantedMeds = [String]()
+    var notedSymptoms = [String]()
     var currentMessageText:Message = Message(theText: String())
     
     override func viewDidLoad() {
@@ -88,12 +90,17 @@ class MainVC: NSViewController, scriptTableDelegate {
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if segue.identifier!.rawValue == "showCurrentMeds" {
+        if segue.identifier?.rawValue == "showCurrentMeds" {
             if let toViewController = segue.destinationController as? CurrentMedsController {
                 //For the delegate to work, it needs to be assigned here
                 //rather than in view did load.  Because it's a modal window?
                 toViewController.medReloadDelegate = self
                 toViewController.medicationsString = medicationString
+            }
+        } else if segue.identifier?.rawValue == "showSymptoms" {
+            if let toViewController = segue.destinationController as? SymptomsController {
+                toViewController.symptomDelegate = self
+                toViewController.selectedSymptoms = [String]()
             }
         }
     }
@@ -156,9 +163,19 @@ class MainVC: NSViewController, scriptTableDelegate {
         }
     }
     
+    func symptomsSelectionWillBeDismissed(sender: SymptomsController) {
+        if !notedSymptoms.isEmpty {
+        if messageView.string.isEmpty {
+            messageView.string = "SYMPTOMS:\n\(notedSymptoms.joined(separator: ", "))"
+        } else {
+            messageView.string += "\n\nSYMPTOMS:\n\(notedSymptoms.joined(separator: ", "))"
+        }
+        }
+    }
+    
     @IBAction func addSymptom(_ sender: NSButton) {
         if sender.state == .on {
-        let newSymptom = sender.title.lowercased()
+        let newSymptom = sender.title
         messageView.string += "\n\(newSymptom)"
         }
     }
