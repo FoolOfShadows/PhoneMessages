@@ -22,12 +22,14 @@ class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate {
     @IBOutlet weak var nameView: NSTextField!
     @IBOutlet weak var dobView: NSTextField!
     @IBOutlet weak var phoneView: NSTextField!
-    @IBOutlet weak var pharmacyView: NSTextField!
+    @IBOutlet weak var pharmacyCombo: NSComboBox!
+    
     @IBOutlet weak var allergiesScroll: NSScrollView!
     @IBOutlet weak var messageScroll: NSScrollView!
     @IBOutlet weak var includeAllergiesCheckbox: NSButton!
     @IBOutlet weak var coughMucusPopup: NSPopUpButton!
     @IBOutlet weak var noseMucusPopup: NSPopUpButton!
+    @IBOutlet weak var lastMessageView: NSTextField!
     
     //For some reason the program crashes on B's MacBook if I try to connect
     //these NSTextViews direct to their outlets in IB
@@ -110,9 +112,10 @@ class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate {
         if includeAllergiesCheckbox.state == .on {
             allergySelection = "\n\n\nALLERGIES:\n\(currentMessageText.allergies)"
         }
-        let messageText = "\(currentMessageText.messageDate)\n\(currentMessageText.ptInnerName) (DOB: \(currentMessageText.ptDOB))\n\(currentMessageText.phone)\n\(pharmacyView.stringValue)\n\nMESSAGE:\n\(messageView.string)\n\nRESPONSE:\(allergySelection)"
+        let messageText = "\(currentMessageText.messageDate)\n\(currentMessageText.ptInnerName) (DOB: \(currentMessageText.ptDOB))\n\(currentMessageText.phone)\n\(pharmacyCombo.stringValue)\n\nMESSAGE:\n\(messageView.string)\n\nRESPONSE:\(allergySelection)"
         guard let fileTextData = messageText.data(using: String.Encoding.utf8) else { return }
         saveExportDialogWithData(fileTextData, andFileExtension: ".txt")
+        //lastMessageView.stringValue = currentMessageText.ptLabelName
     }
     
     
@@ -137,6 +140,9 @@ class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate {
                                 print(returnCode)
                             }
                         }
+                        if let thePath = path.absoluteString.removingPercentEncoding {
+                            self.lastMessageView.stringValue = thePath
+                        }
                     }
                 }
                 
@@ -153,6 +159,7 @@ class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate {
         coughMucusPopup.removeAllItems()
         coughMucusPopup.addItems(withTitles: mucusColor)
         coughMucusPopup.selectItem(at: 0)
+        pharmacyCombo.clearComboBox(menuItems: pharmacies)
     }
     
     func currentMedsWillBeDismissed(sender: CurrentMedsController) {

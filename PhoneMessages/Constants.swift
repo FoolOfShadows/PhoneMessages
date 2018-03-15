@@ -33,3 +33,5 @@ let visitBoilerplateText = "CC:  \nProblems:  \n\n\nS:  \n\nLocation:  \nSeverit
 let medKey = "(- = currently taking; x = not currently taking; ? = unsure)\n"
 
 let mucusColor = ["", "Clear", "White", "Yellow", "Green", "Brown", "Bloody"]
+
+let pharmacies = ["", "Walmart", "CVS", "Walgreens", "Krogers", "SuperOne", "Matthewsons"]
