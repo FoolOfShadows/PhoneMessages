@@ -46,36 +46,63 @@ struct Message {
         case preventive = "(?s)(Preventive care).*((?<=)Social history)"
     }
     
-}
-
-
-func nameAgeDOB(_ theText: String) -> (String, String, String, String){
-    var ptName = ""
-    var ptAge = ""
-    var ptDOB = ""
-    var ptPhoneArray = [String]()
-    let theSplitText = theText.components(separatedBy: "\n")
-    
-    var lineCount = 0
-    if !theSplitText.isEmpty {
-        for currentLine in theSplitText {
-            if currentLine.range(of: "PRN: ") != nil {
-                let ageLine = theSplitText[lineCount + 1]
-                ptName = theSplitText[lineCount - 1]
-                ptAge = ageLine.simpleRegExMatch("^\\d*")
-            } else if currentLine.hasPrefix("DOB: ") {
-                let dobLine = currentLine
-                ptDOB = dobLine.simpleRegExMatch("\\d./\\d./\\d*")
-            } else if currentLine.hasPrefix("H: (") || currentLine.hasPrefix("W: (") || currentLine.hasPrefix("M: (") {
-                 ptPhoneArray.append(currentLine)
+    private func nameAgeDOB(_ theText: String) -> (String, String, String, String){
+        var ptName = ""
+        var ptAge = ""
+        var ptDOB = ""
+        var ptPhoneArray = [String]()
+        let theSplitText = theText.components(separatedBy: "\n")
+        
+        var lineCount = 0
+        if !theSplitText.isEmpty {
+            for currentLine in theSplitText {
+                if currentLine.range(of: "PRN: ") != nil {
+                    let ageLine = theSplitText[lineCount + 1]
+                    ptName = theSplitText[lineCount - 1]
+                    ptAge = ageLine.simpleRegExMatch("^\\d*")
+                } else if currentLine.hasPrefix("DOB: ") {
+                    let dobLine = currentLine
+                    ptDOB = dobLine.simpleRegExMatch("\\d./\\d./\\d*")
+                } else if currentLine.hasPrefix("H: (") || currentLine.hasPrefix("W: (") || currentLine.hasPrefix("M: (") {
+                    ptPhoneArray.append(currentLine)
+                }
+                lineCount += 1
             }
-            lineCount += 1
+        }
+        //print(ptName, ptAge, ptDOB, ptPhone)
+        return (ptName, ptAge, ptDOB, ptPhoneArray.joined(separator: "\t"))
+        
+    }
+    
+    private func getLastAptInfoFrom(_ theText: String) -> String {
+        guard let baseSection = theText.findRegexMatchFrom("Encounters", to: "Appointments") else {return ""}
+        //print(baseSection)
+        guard let encountersSection = baseSection.findRegexMatchBetween("Encounters", and: "Messages") else {return ""}
+        //print(encountersSection)
+        let activeEncounters = encountersSection.ranges(of: "(?s)(\\d./\\d./\\d*)(.*?)(\\n)(?=\\d./\\d./\\d*)", options: .regularExpression).map{encountersSection[$0]}.map{String($0)}.filter {!$0.contains("No chief complaint recorded")}
+        print(activeEncounters)
+        if activeEncounters.count > 0 {
+            return activeEncounters[0].simpleRegExMatch("\\d./\\d./\\d*")
+        } else {
+            return "Last apt not found"
         }
     }
-    //print(ptName, ptAge, ptDOB, ptPhone)
-    return (ptName, ptAge, ptDOB, ptPhoneArray.joined(separator: "\t"))
+    
+    private func getNextAptInfoFrom(_ theText: String) -> String {
+        guard let nextAppointments = theText.findRegexMatchBetween("Appointments", and: "View all appointments") else {return ""}
+        //print(nextAppointments)
+        let activeEncounters = nextAppointments.ranges(of: "(?s)(\\w\\w\\w \\d\\d, \\d\\d\\d\\d)(.*?)(\\n)(?=\\w\\w\\w \\d\\d, \\d\\d\\d\\d)", options: .regularExpression).map{nextAppointments[$0]}.map{String($0)}.filter {$0.contains("Pending arrival")}
+        if activeEncounters.count > 0 {
+            return activeEncounters[0].simpleRegExMatch("\\w\\w\\w \\d\\d, \\d\\d\\d\\d - \\d\\d:\\d\\d \\w\\w")
+        } else {
+            return "Next apt not found"
+        }
+    }
     
 }
+
+
+
 
 //Parse a string containing a full name into it's components and returns
 //the version of the name we use to label files
@@ -163,70 +190,7 @@ func checkForICD10(_ theText: String, window: NSWindow) -> Bool {
     return icd10bool
 }
 
-//func getAllergyTextFrom(_ theText:String) -> String {
-//    var allergyResults = [String]()
-//    //Get the allergy info
-//    if var basicAllergyRegex = theText.findRegexMatchBetween(basicAllergyStartOfText, and: basicAllergyEndOfText) {
-//        basicAllergyRegex = basicAllergyRegex.cleanTheTextOf(basicAllergyBadBits)
-//        basicAllergyRegex = basicAllergyRegex.replacingOccurrences(of: "\n\n", with: "\n")
-//        allergyResults.append(basicAllergyRegex)
-//    }
-//
-//
-//    let finalAllergiesParameter = defineFinalParameter(theText, firstParameter: freeAllergyEndOfTextFirstParameter, secondParameter: freeAllergyEndOfTextSecondParameter)
-//    if var freeAllergyRegex = theText.findRegexMatchBetween(freeAllergyStartOfText, and: finalAllergiesParameter) {
-//        freeAllergyRegex = freeAllergyRegex.cleanTheTextOf(freeAllergyBadBits)
-//        freeAllergyRegex = freeAllergyRegex.replacingOccurrences(of: "\n\n", with: "\n")
-//        allergyResults.append(freeAllergyRegex)
-//    }
-//    //print(allergyResults)
-//    return allergyResults.joined(separator: "\n")
-//}
 
-//func getMedTextFrom(_ theText:String) -> String {
-//    guard let theResults = theText.findRegexMatchBetween(medStartOfText, and: medEndOfText) else {return "No med info found"}
-//    if theResults.isEmpty || theResults == "" {
-//        return "Meds turned up empty"
-//    }
-//    return theResults
-//}
-
-//Check for the existence of certain strings in the text
-//in order to determine the best string to use in the regexTheText function
-//func defineFinalParameter(_ theText: String, firstParameter: String, secondParameter: String) -> String {
-//    var theParameter = ""
-//    if theText.range(of: firstParameter) != nil {
-//        theParameter = firstParameter
-//    } else if theText.range(of: secondParameter) != nil {
-//        theParameter = secondParameter
-//    }
-//    return theParameter
-//}
-
-func getLastAptInfoFrom(_ theText: String) -> String {
-    guard let baseSection = theText.findRegexMatchFrom("Encounters", to: "Appointments") else {return ""}
-    //print(baseSection)
-    guard let encountersSection = baseSection.findRegexMatchBetween("Encounters", and: "Messages") else {return ""}
-    //print(encountersSection)
-    let activeEncounters = encountersSection.ranges(of: "(?s)(\\d./\\d./\\d*)(.*?)(\\n)(?=\\d./\\d./\\d*)", options: .regularExpression).map{encountersSection[$0]}.map{String($0)}.filter {!$0.contains("No chief complaint recorded")}
-    print(activeEncounters)
-    if activeEncounters.count > 0 {
-    return activeEncounters[0].simpleRegExMatch("\\d./\\d./\\d*")
-    } else {
-        return "Last apt not found"
-    }
-}
-
-func getNextAptInfoFrom(_ theText: String) -> String {
-    guard let nextAppointments = theText.findRegexMatchBetween("Appointments", and: "View all appointments") else {return ""}
-    //print(nextAppointments)
-    let activeEncounters = nextAppointments.ranges(of: "(?s)(\\w\\w\\w \\d\\d, \\d\\d\\d\\d)(.*?)(\\n)(?=\\w\\w\\w \\d\\d, \\d\\d\\d\\d)", options: .regularExpression).map{nextAppointments[$0]}.map{String($0)}.filter {$0.contains("Pending arrival")}
-    if activeEncounters.count > 0 {
-        return activeEncounters[0].simpleRegExMatch("\\w\\w\\w \\d\\d, \\d\\d\\d\\d - \\d\\d:\\d\\d \\w\\w")
-    } else {
-        return "Next apt not found"
-    }
-}
     
 
 

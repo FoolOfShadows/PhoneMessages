@@ -16,7 +16,7 @@ protocol symptomsDelegate: class {
     func symptomsSelectionWillBeDismissed(sender: SymptomsController)
 }
 
-class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate {
+class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate, NSComboBoxDelegate {
 
     @IBOutlet weak var dateView: NSTextField!
     @IBOutlet weak var nameView: NSTextField!
@@ -27,8 +27,9 @@ class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate {
     @IBOutlet weak var allergiesScroll: NSScrollView!
     @IBOutlet weak var messageScroll: NSScrollView!
     @IBOutlet weak var includeAllergiesCheckbox: NSButton!
-    @IBOutlet weak var coughMucusPopup: NSPopUpButton!
-    @IBOutlet weak var noseMucusPopup: NSPopUpButton!
+    @IBOutlet weak var resultsCombo: NSComboBox!
+    @IBOutlet weak var schedulingCombo: NSComboBox!
+    
     @IBOutlet weak var lastMessageView: NSTextField!
     
     //For some reason the program crashes on B's MacBook if I try to connect
@@ -55,6 +56,8 @@ class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate {
         clearMessage(self)
         allergiesView.font = NSFont.systemFont(ofSize: 18)
         messageView.font = NSFont.systemFont(ofSize: 18)
+        self.resultsCombo.delegate = self
+        self.schedulingCombo.delegate = self
        
     }
     
@@ -153,13 +156,9 @@ class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate {
         self.view.clearControllers()
         currentMessageText = Message(theText: String())
         wantedMeds = [String]()
-        noseMucusPopup.removeAllItems()
-        noseMucusPopup.addItems(withTitles: mucusColor)
-        noseMucusPopup.selectItem(at: 0)
-        coughMucusPopup.removeAllItems()
-        coughMucusPopup.addItems(withTitles: mucusColor)
-        coughMucusPopup.selectItem(at: 0)
+        schedulingCombo.clearComboBox(menuItems: resultsList)
         pharmacyCombo.clearComboBox(menuItems: pharmacies)
+        resultsCombo.clearComboBox(menuItems: resultsList)
     }
     
     func currentMedsWillBeDismissed(sender: CurrentMedsController) {
@@ -181,23 +180,48 @@ class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate {
     }
     
     @IBAction func addSymptom(_ sender: NSButton) {
-        if sender.state == .on {
         let newSymptom = sender.title
+        if sender.state == .on {
         messageView.string += "\n\(newSymptom)"
+        } else if sender.state == .off {
+            messageView.string = messageView.string.replacingOccurrences(of: "\n\(newSymptom)", with: "")
         }
     }
+   
+//    func comboBoxSelectionIsChanging(_ notification: Notification) {
+//        let comboBox = notification.object as! NSComboBox
+//        switch comboBox {
+//        case schedulingCombo:
+//            print("Scheduling value: \(schedulingCombo.stringValue)")
+//            if !schedulingCombo.stringValue.isEmpty {
+//                print("Scheduling not empty")
+//                let newSymptom = "Patient requesting scheduling update for \(schedulingCombo.stringValue)"
+//                messageView.string += "\n\(newSymptom)"
+//            }
+//        case resultsCombo:
+//            print("Results")
+//            if !resultsCombo.stringValue.isEmpty {
+//                let newSymptom = "Patient requesting results of \(resultsCombo.stringValue)"
+//                messageView.string += "\n\(newSymptom)"
+//            }
+//        default:
+//            return
+//        }
+//    }
     
-    @IBAction func addCoughSymptomWithMucusColor(_ sender: NSPopUpButton) {
-        if !sender.titleOfSelectedItem!.isEmpty {
-            let newSymptom = "productive cough (\(sender.title.lowercased()))"
+    @IBAction func addResultRequest(_ sender: NSComboBox) {
+        if !sender.stringValue.isEmpty {
+            let newSymptom = "Patient requesting results of \(sender.stringValue)"
             messageView.string += "\n\(newSymptom)"
+            sender.selectItem(at: 0)
         }
     }
-    
-    @IBAction func addNoseSymptomWithMucusColor(_ sender: NSPopUpButton) {
-        if !sender.titleOfSelectedItem!.isEmpty {
-            let newSymptom = "runny nose (\(sender.title.lowercased()))"
+
+    @IBAction func addSchedulingRequest(_ sender: NSComboBox) {
+        if !sender.stringValue.isEmpty {
+            let newSymptom = "Patient requesting scheduling update for \(sender.stringValue)"
             messageView.string += "\n\(newSymptom)"
+            sender.selectItem(at: 0)
         }
     }
     

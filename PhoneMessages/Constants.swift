@@ -34,4 +34,5 @@ let medKey = "(- = currently taking; x = not currently taking; ? = unsure)\n"
 
 let mucusColor = ["", "Clear", "White", "Yellow", "Green", "Brown", "Bloody"]
 
-let pharmacies = ["", "Walmart", "CVS", "Walgreens", "Krogers", "SuperOne", "Matthewsons"]
+let pharmacies = ["", "Krogers", "Matthewsons", "Walgreens", "Super1", "Walmart", "CVS", "Killions", "Humana", "Express Scripts", "Optum Rx", "Walmart (Carthage)", "Super1 (Tyler)", "Krogers (Longview)", "City Drug", "Well Dynamix", "Davita Rx", "Walmart (4th St.)", "Written script"]
+let resultsList = ["", "XRAY", "MRI", "CT", "Ultrasound","Labs", "Referral"]
