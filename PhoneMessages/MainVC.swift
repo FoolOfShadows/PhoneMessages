@@ -181,12 +181,16 @@ class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate, NSComboBo
     
     @IBAction func addSymptom(_ sender: NSButton) {
         let newSymptom = sender.title
-        if sender.state == .on {
-        messageView.string += "\n\(newSymptom)"
-        } else if sender.state == .off {
-            messageView.string = messageView.string.replacingOccurrences(of: "\n\(newSymptom)", with: "")
+            if sender.state == .on {
+                if messageView.string.isEmpty {
+                    messageView.string = newSymptom
+                } else {
+                    messageView.string += "\n\(newSymptom)"
+                }
+            } else if sender.state == .off {
+                messageView.string = messageView.string.replacingOccurrences(of: "\n\(newSymptom)", with: "")
+            }
         }
-    }
    
 //    func comboBoxSelectionIsChanging(_ notification: Notification) {
 //        let comboBox = notification.object as! NSComboBox
@@ -211,16 +215,24 @@ class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate, NSComboBo
     
     @IBAction func addResultRequest(_ sender: NSComboBox) {
         if !sender.stringValue.isEmpty {
-            let newSymptom = "Patient requesting results of \(sender.stringValue)"
-            messageView.string += "\n\(newSymptom)"
+            let newSymptom = "Patient requesting results of \(sender.stringValue)."
+            if messageView.string.isEmpty {
+                messageView.string = newSymptom
+            } else {
+                messageView.string += "\n\(newSymptom)"
+            }
             sender.selectItem(at: 0)
         }
     }
 
     @IBAction func addSchedulingRequest(_ sender: NSComboBox) {
         if !sender.stringValue.isEmpty {
-            let newSymptom = "Patient requesting scheduling update for \(sender.stringValue)"
-            messageView.string += "\n\(newSymptom)"
+            let newSymptom = "Patient requesting scheduling update for \(sender.stringValue)."
+            if messageView.string.isEmpty {
+                messageView.string = newSymptom
+            } else {
+                messageView.string += "\n\(newSymptom)"
+            }
             sender.selectItem(at: 0)
         }
     }
