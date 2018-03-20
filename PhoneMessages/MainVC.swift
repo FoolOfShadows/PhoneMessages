@@ -23,6 +23,7 @@ class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate, NSComboBo
     @IBOutlet weak var dobView: NSTextField!
     @IBOutlet weak var phoneView: NSTextField!
     @IBOutlet weak var pharmacyCombo: NSComboBox!
+    @IBOutlet weak var onBehalfView: NSTextField!
     
     @IBOutlet weak var allergiesScroll: NSScrollView!
     @IBOutlet weak var messageScroll: NSScrollView!
@@ -112,10 +113,15 @@ class MainVC: NSViewController, scriptTableDelegate, symptomsDelegate, NSComboBo
     
     @IBAction func saveFile(_ sender: Any) {
         var allergySelection = String()
-        if includeAllergiesCheckbox.state == .on {
-            allergySelection = "\n\n\nALLERGIES:\n\(currentMessageText.allergies)"
+        var callingOnBehalf = String()
+        
+        if !onBehalfView.stringValue.isEmpty {
+            callingOnBehalf =  "\nContact: \(onBehalfView.stringValue)"
         }
-        let messageText = "\(currentMessageText.messageDate)\n\(currentMessageText.ptInnerName) (DOB: \(currentMessageText.ptDOB))\n\(currentMessageText.phone)\n\(pharmacyCombo.stringValue)\n\nMESSAGE:\n\(messageView.string)\n\nRESPONSE:\(allergySelection)"
+        if includeAllergiesCheckbox.state == .on {
+            allergySelection = "\n\n\nALLERGIES:\n\(allergiesView.string)"
+        }
+        let messageText = "\(dateView.stringValue)\n\(nameView.stringValue) (DOB: \(dobView.stringValue))\n\(phoneView.stringValue)\(callingOnBehalf)\n\(pharmacyCombo.stringValue)\n\nMESSAGE:\n\(messageView.string)\n\nRESPONSE:\(allergySelection)"
         guard let fileTextData = messageText.data(using: String.Encoding.utf8) else { return }
         saveExportDialogWithData(fileTextData, andFileExtension: ".txt")
         //lastMessageView.stringValue = currentMessageText.ptLabelName

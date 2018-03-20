@@ -714,7 +714,7 @@
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RF9-4P-cn6">
                                 <rect key="frame" x="20" y="695" width="250" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Name" drawsBackground="YES" id="ukU-qK-QbH">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Patient name" drawsBackground="YES" id="ukU-qK-QbH">
                                     <font key="font" metaFont="system" size="18"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -732,7 +732,7 @@
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMt-ok-mdN">
                                 <rect key="frame" x="20" y="621" width="442" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Phone" drawsBackground="YES" id="Swa-WZ-vOa">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Patient phone" drawsBackground="YES" id="Swa-WZ-vOa">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1008,7 +1008,7 @@
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="396-4V-oIi">
-                                <rect key="frame" x="21" y="583" width="444" height="28"/>
+                                <rect key="frame" x="714" y="501" width="271" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Phamacy" drawsBackground="YES" completes="NO" numberOfVisibleItems="20" id="zjH-Jc-n75">
                                     <font key="font" metaFont="system" size="15"/>
@@ -1031,7 +1031,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XDG-Py-YtE">
-                                <rect key="frame" x="712" y="489" width="198" height="18"/>
+                                <rect key="frame" x="712" y="461" width="198" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Patient refused appointment." bezelStyle="regularSquare" imagePosition="left" inset="2" id="nTu-nr-UhA">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1042,7 +1042,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NY0-Ib-8Gb">
-                                <rect key="frame" x="712" y="469" width="215" height="18"/>
+                                <rect key="frame" x="712" y="441" width="215" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Patient scheduled appointment." bezelStyle="regularSquare" imagePosition="left" inset="2" id="ZWd-SX-p88">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1053,7 +1053,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qem-gU-frD">
-                                <rect key="frame" x="712" y="429" width="206" height="18"/>
+                                <rect key="frame" x="712" y="401" width="206" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Patient requesting early refills." bezelStyle="regularSquare" imagePosition="left" inset="2" id="w6P-7L-PRO">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1064,7 +1064,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w6A-Nk-ykc">
-                                <rect key="frame" x="712" y="509" width="239" height="18"/>
+                                <rect key="frame" x="712" y="481" width="239" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Patient would like to be called back." bezelStyle="regularSquare" imagePosition="left" inset="2" id="AuK-zL-Pcx">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1075,7 +1075,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="He1-n4-cMj">
-                                <rect key="frame" x="712" y="405" width="168" height="16"/>
+                                <rect key="frame" x="712" y="377" width="168" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Patient requesting results of:" id="fbf-0g-plv">
                                     <font key="font" metaFont="cellTitle"/>
@@ -1084,7 +1084,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GYb-KG-fs5">
-                                <rect key="frame" x="713" y="348" width="243" height="16"/>
+                                <rect key="frame" x="713" y="320" width="243" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Patient asking for scheduling updated on: " id="n7P-QU-jQn">
                                     <font key="font" metaFont="cellTitle"/>
@@ -1093,7 +1093,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Al-4s-zk6">
-                                <rect key="frame" x="712" y="449" width="204" height="18"/>
+                                <rect key="frame" x="712" y="421" width="204" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Patient instructed to go to ER." bezelStyle="regularSquare" imagePosition="left" inset="2" id="SwT-fO-56t">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1104,7 +1104,7 @@
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bVI-29-vAy">
-                                <rect key="frame" x="715" y="370" width="209" height="26"/>
+                                <rect key="frame" x="715" y="342" width="209" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="10" id="qjI-N8-yV3">
                                     <font key="font" metaFont="system"/>
@@ -1121,7 +1121,7 @@
                                 </connections>
                             </comboBox>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CKZ-R7-AuH">
-                                <rect key="frame" x="714" y="316" width="209" height="26"/>
+                                <rect key="frame" x="714" y="288" width="209" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="10" id="ecm-E1-8Mt">
                                     <font key="font" metaFont="system"/>
@@ -1137,6 +1137,15 @@
                                     <action selector="addSchedulingRequest:" target="XfG-lQ-9wD" id="nMz-Q8-cO4"/>
                                 </connections>
                             </comboBox>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gsf-SZ-RBh">
+                                <rect key="frame" x="20" y="584" width="442" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Calling on behalf of patient" drawsBackground="YES" id="HdV-Is-29h">
+                                    <font key="font" metaFont="system" size="15"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -1147,6 +1156,7 @@
                         <outlet property="lastMessageView" destination="qGu-Nh-Km7" id="1Xx-cn-2Kv"/>
                         <outlet property="messageScroll" destination="xbX-zW-7tU" id="mUD-rx-Sx8"/>
                         <outlet property="nameView" destination="RF9-4P-cn6" id="Vjq-Gb-mCJ"/>
+                        <outlet property="onBehalfView" destination="Gsf-SZ-RBh" id="96L-5O-nCu"/>
                         <outlet property="pharmacyCombo" destination="396-4V-oIi" id="3Ye-SW-h3v"/>
                         <outlet property="phoneView" destination="tMt-ok-mdN" id="HKw-12-Foq"/>
                         <outlet property="resultsCombo" destination="bVI-29-vAy" id="Lle-Iw-4X7"/>
