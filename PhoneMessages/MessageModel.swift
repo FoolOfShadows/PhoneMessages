@@ -39,7 +39,7 @@ struct Message {
         case nutrition1 = "(?s)(Nutrition history).*((?<=)Developmental history)"
         case nutrition2 = "(?s)(Nutrition history).*((?<=)Allergies\\n)"
         case diagnoses = "(?s)Diagnoses.*Social history*?\\s(?=\\nSmoking status*?\\s\\n)"
-        case medications = "(?s)(Medications).*(Encounters)"
+        case medications = "(?s)(Medications*\\s+?\\n).*(Encounters)"
         case allergies = "(?s)(\nAllergies\n).*(Medications)"
         case pmh = "(?s)(Ongoing medical problems).*(Family health history)"
         case psh = "(?s)(Major events).*(Ongoing medical problems)"
@@ -58,7 +58,7 @@ struct Message {
             for currentLine in theSplitText {
                 if currentLine.range(of: "PRN: ") != nil {
                     let ageLine = theSplitText[lineCount + 1]
-                    ptName = theSplitText[lineCount - 1]
+                    ptName = theSplitText[lineCount - 1].replacingOccurrences(of: "(Inactive) ", with: "")
                     ptAge = ageLine.simpleRegExMatch("^\\d*")
                 } else if currentLine.hasPrefix("DOB: ") {
                     let dobLine = currentLine
