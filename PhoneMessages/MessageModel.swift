@@ -39,7 +39,7 @@ struct Message {
         case nutrition1 = "(?s)(Nutrition history).*((?<=)Developmental history)"
         case nutrition2 = "(?s)(Nutrition history).*((?<=)Allergies\\n)"
         case diagnoses = "(?s)Diagnoses.*Social history*?\\s(?=\\nSmoking status*?\\s\\n)"
-        case medications = "(?s)(Medications*\\s+?\\n).*(Encounters)"
+        case medications = "(?s)(Medications*\\s+?\\n).*(Screenings/ Interventions/)"
         case allergies = "(?s)(\nAllergies\n).*(Medications)"
         case pmh = "(?s)(Ongoing medical problems).*(Family health history)"
         case psh = "(?s)(Major events).*(Ongoing medical problems)"

@@ -12,11 +12,11 @@
 		791AB71F204F061200794AEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 791AB71D204F061200794AEF /* Main.storyboard */; };
 		791AB728204F06DB00794AEF /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB727204F06DB00794AEF /* MainVC.swift */; };
 		791AB72B204F0B1F00794AEF /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB729204F0B1F00794AEF /* GeneralExtensions.swift */; };
-		791AB72C204F0B1F00794AEF /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB72A204F0B1F00794AEF /* StringExtensions.swift */; };
 		791AB72E204F0F3C00794AEF /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791AB72D204F0F3C00794AEF /* MessageModel.swift */; };
 		791DBFB2205ABC4100974F57 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791DBFB1205ABC4100974F57 /* Constants.swift */; };
-		796150AE205818EF00EC8D08 /* RedGreenCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796150AD205818EF00EC8D08 /* RedGreenCheckbox.swift */; };
 		7995264920518B22006115DD /* CurrentMedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995264820518B22006115DD /* CurrentMedsController.swift */; };
+		79C3E86321AC49B400760A5C /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C3E86221AC49B400760A5C /* StringExtensions.swift */; };
+		79C3E86521AC4A2E00760A5C /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C3E86421AC4A2E00760A5C /* Buttons.swift */; };
 		79F161E42056FC530025E991 /* SymptomsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F161E32056FC530025E991 /* SymptomsController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,11 +29,11 @@
 		791AB721204F061200794AEF /* PhoneMessages.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PhoneMessages.entitlements; sourceTree = "<group>"; };
 		791AB727204F06DB00794AEF /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		791AB729204F0B1F00794AEF /* GeneralExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralExtensions.swift; path = "../../Physical Exam 2/Physical Exam 2/GeneralExtensions.swift"; sourceTree = "<group>"; };
-		791AB72A204F0B1F00794AEF /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = "../../Physical Exam 2/Physical Exam 2/StringExtensions.swift"; sourceTree = "<group>"; };
 		791AB72D204F0F3C00794AEF /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		791DBFB1205ABC4100974F57 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		796150AD205818EF00EC8D08 /* RedGreenCheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RedGreenCheckbox.swift; path = ../../LIROS/LIROS/RedGreenCheckbox.swift; sourceTree = "<group>"; };
 		7995264820518B22006115DD /* CurrentMedsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentMedsController.swift; path = ../../SampleCheckOutTab/SampleCheckOutTab/CurrentMedsController.swift; sourceTree = "<group>"; };
+		79C3E86221AC49B400760A5C /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		79C3E86421AC4A2E00760A5C /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		79F161E32056FC530025E991 /* SymptomsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,8 +78,8 @@
 				791AB721204F061200794AEF /* PhoneMessages.entitlements */,
 				791DBFB1205ABC4100974F57 /* Constants.swift */,
 				791AB729204F0B1F00794AEF /* GeneralExtensions.swift */,
-				791AB72A204F0B1F00794AEF /* StringExtensions.swift */,
-				796150AD205818EF00EC8D08 /* RedGreenCheckbox.swift */,
+				79C3E86221AC49B400760A5C /* StringExtensions.swift */,
+				79C3E86421AC4A2E00760A5C /* Buttons.swift */,
 			);
 			path = PhoneMessages;
 			sourceTree = "<group>";
@@ -160,12 +160,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				791AB72E204F0F3C00794AEF /* MessageModel.swift in Sources */,
-				791AB72C204F0B1F00794AEF /* StringExtensions.swift in Sources */,
+				79C3E86321AC49B400760A5C /* StringExtensions.swift in Sources */,
 				791AB718204F061000794AEF /* AppDelegate.swift in Sources */,
 				79F161E42056FC530025E991 /* SymptomsController.swift in Sources */,
 				791DBFB2205ABC4100974F57 /* Constants.swift in Sources */,
+				79C3E86521AC4A2E00760A5C /* Buttons.swift in Sources */,
 				791AB72B204F0B1F00794AEF /* GeneralExtensions.swift in Sources */,
-				796150AE205818EF00EC8D08 /* RedGreenCheckbox.swift in Sources */,
 				791AB728204F06DB00794AEF /* MainVC.swift in Sources */,
 				7995264920518B22006115DD /* CurrentMedsController.swift in Sources */,
 			);
